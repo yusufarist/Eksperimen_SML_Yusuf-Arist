@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
+import os
 
 def preprocess_data(file_path):
     # Load data
@@ -26,11 +27,17 @@ def preprocess_data(file_path):
     return X_train, X_test, y_train, y_test
 
 if __name__ == "__main__":
-    # Contoh penggunaan
-    X_train, X_test, y_train, y_test = preprocess_data('../heart_raw/heart.csv')
+    # Buat direktori output jika belum ada
+    os.makedirs('heart_preprocessing', exist_ok=True)
+    
+    # Path file yang akan diproses
+    input_file = 'heart_raw/heart.csv'
+    
+    # Proses data
+    X_train, X_test, y_train, y_test = preprocess_data(input_file)
     
     # Simpan hasil preprocessing
-    X_train.to_csv('X_train.csv', index=False)
-    X_test.to_csv('X_test.csv', index=False)
-    y_train.to_csv('y_train.csv', index=False)
-    y_test.to_csv('y_test.csv', index=False)
+    X_train.to_csv('heart_preprocessing/X_train.csv', index=False)
+    X_test.to_csv('heart_preprocessing/X_test.csv', index=False)
+    y_train.to_csv('heart_preprocessing/y_train.csv', index=False)
+    y_test.to_csv('heart_preprocessing/y_test.csv', index=False)
