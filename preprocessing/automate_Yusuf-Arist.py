@@ -30,8 +30,8 @@ if __name__ == "__main__":
     # Buat direktori output jika belum ada
     os.makedirs('heart_preprocessing', exist_ok=True)
     
-    # Path file yang akan diproses
-    input_file = 'heart_raw/heart.csv'
+    # Path file yang akan diproses (relatif terhadap folder preprocessing)
+    input_file = '../heart_raw/heart.csv'
     
     # Proses data
     X_train, X_test, y_train, y_test = preprocess_data(input_file)
