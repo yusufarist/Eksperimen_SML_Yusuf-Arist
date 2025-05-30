@@ -26,6 +26,7 @@ jobs:
       run: |
         cd preprocessing
         python automate_Yusuf-Arist.py
+        cd ..
     
     - name: Commit and push if changed
       run: |
